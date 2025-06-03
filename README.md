@@ -53,7 +53,7 @@ The script will:
 
 | Original Image | Processed Output |
 |----------------|------------------|
-| ![](images/sample.jpg) | ![](output/sample_processed.jpg) |
+| ![](D:\projects\Football Image Processing with OpenCV\imput.png) | ![](D:\projects\Football Image Processing with OpenCV\output.png) |
 
 ## 🔧 Customize
 
