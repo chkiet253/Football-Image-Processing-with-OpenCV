@@ -287,10 +287,11 @@ class Tracker:
 
             # Draw Players with track IDs
             for track_id, player in player_dict.items():
+                color = player.get("team_color", (0, 0, 255))
                 frame = self.draw_ellipse(
                     frame, 
                     player["bbox"], 
-                    self.colors['Player'], 
+                    color, 
                     track_id
                 )
 
