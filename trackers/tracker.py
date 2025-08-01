@@ -34,6 +34,61 @@ class Tracker:
             'Side Referee': (255, 0, 255),     # Magenta
             'Staff Member': (128, 128, 128)    # Gray
         }
+    
+    def interpolate_ball_positions(self, ball_positions):
+        '''
+        Interpolate missing ball positions across frames
+        
+        Args:
+            ball_positions: List of ball detections for each frame
+                        Each element is a list of ball detections in that frame
+                        Format: [[], [{'bbox': [x1,y1,x2,y2]}], [], ...]
+        
+        Returns:
+            List of interpolated ball positions with same format
+        '''
+        print(f"Interpolating ball positions across {len(ball_positions)} frames...")
+        
+        # Extract ball positions - take first ball detection in each frame if multiple exist
+        extracted_positions = []
+        for frame_balls in ball_positions:
+            if frame_balls and len(frame_balls) > 0 and 'bbox' in frame_balls[0]:
+                # Take the first ball detection if multiple balls detected
+                bbox = frame_balls[0]['bbox']
+                extracted_positions.append(bbox)
+            else:
+                # No ball detected in this frame
+                extracted_positions.append([np.nan, np.nan, np.nan, np.nan])
+        
+        # Create DataFrame for interpolation
+        df_ball_positions = pd.DataFrame(extracted_positions, columns=['x1', 'y1', 'x2', 'y2'])
+        
+        # Count missing values before interpolation
+        missing_count = df_ball_positions.isna().any(axis=1).sum()
+        print(f"Frames with missing ball detections: {missing_count}/{len(ball_positions)}")
+        
+        # Interpolate missing values using linear interpolation
+        df_ball_positions = df_ball_positions.interpolate(method='linear')
+        
+        # Forward fill and backward fill for any remaining NaN values at edges
+        df_ball_positions = df_ball_positions.bfill()  # Backward fill
+        df_ball_positions = df_ball_positions.ffill()  # Forward fill
+        
+        # Convert back to original format
+        interpolated_positions = []
+        for _, row in df_ball_positions.iterrows():
+            if not row.isna().any():  # If we have valid interpolated values
+                bbox = [row['x1'], row['y1'], row['x2'], row['y2']]
+                interpolated_positions.append([{'bbox': bbox}])
+            else:
+                # Still no valid position (this shouldn't happen after ffill/bfill)
+                interpolated_positions.append([])
+        
+        # Count successful interpolations
+        successful_interpolations = len([x for x in interpolated_positions if x])
+        print(f"Successfully interpolated positions for {successful_interpolations}/{len(ball_positions)} frames")
+        
+        return interpolated_positions
 
     def detect_frames(self, frames):
         """
@@ -261,7 +316,26 @@ class Tracker:
 
         return frame
 
-    def draw_annotations(self, video_frames, tracks):
+    def draw_team_ball_control(self, frame, frame_num, team_ball_control):
+        # Draw a semi-transparent rectaggle 
+        overlay = frame.copy()
+        cv2.rectangle(overlay, (1350, 850), (1900,970), (255,255,255), -1 )
+        alpha = 0.4
+        cv2.addWeighted(overlay, alpha, frame, 1 - alpha, 0, frame)
+
+        team_ball_control_till_frame = team_ball_control[:frame_num+1]
+        # Get the number of time each team had ball control
+        team_1_num_frames = team_ball_control_till_frame[team_ball_control_till_frame==1].shape[0]
+        team_2_num_frames = team_ball_control_till_frame[team_ball_control_till_frame==2].shape[0]
+        team_1 = team_1_num_frames/(team_1_num_frames+team_2_num_frames)
+        team_2 = team_2_num_frames/(team_1_num_frames+team_2_num_frames)
+
+        cv2.putText(frame, f"Team 1 Ball Control: {team_1*100:.2f}%",(1400,900), cv2.FONT_HERSHEY_SIMPLEX, 1, (0,0,0), 3)
+        cv2.putText(frame, f"Team 2 Ball Control: {team_2*100:.2f}%",(1400,950), cv2.FONT_HERSHEY_SIMPLEX, 1, (0,0,0), 3)
+
+        return frame
+
+    def draw_annotations(self, video_frames, tracks, team_ball_control):
         """
         Draw all annotations on video frames
         
@@ -294,6 +368,8 @@ class Tracker:
                     color, 
                     track_id
                 )
+                if player.get('has_ball',False):
+                    frame = self.draw_triangle(frame, player["bbox"],(0,0,255))
 
             # Draw GoalKeepers with track IDs
             for track_id, goalkeeper in goalkeeper_dict.items():
@@ -329,6 +405,8 @@ class Tracker:
                         self.colors['Ball']
                     )
 
+            # Draw Team Ball Control
+            frame = self.draw_team_ball_control(frame, frame_num, team_ball_control)
             output_video_frames.append(frame)
 
         return output_video_frames
