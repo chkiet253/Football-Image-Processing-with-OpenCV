@@ -270,7 +270,7 @@ class Tracker:
                 frame,
                 (int(x1_rect), int(y1_rect)),
                 (int(x2_rect), int(y2_rect)),
-                (255, 153, 255),
+                color,
                 cv2.FILLED
             )
             
