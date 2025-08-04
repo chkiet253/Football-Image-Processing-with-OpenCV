@@ -248,7 +248,7 @@ class Tracker:
             center=(x_center, y2),
             axes=(int(width), int(0.35 * width)),
             angle=0.0,
-            startAngle=45,
+            startAngle=-45,
             endAngle=235,
             color=color,
             thickness=2,
@@ -257,19 +257,20 @@ class Tracker:
         
         # Draw track ID if provided
         if track_id is not None:
+
             rectangle_width = 40
-            rectangle_height = 29
+            rectangle_height = 20
             x1_rect = x_center - rectangle_width // 2
             x2_rect = x_center + rectangle_width // 2
             y1_rect = (y2 - rectangle_height // 2) + 15
-            y2_rect = (y2 + rectangle_height // 2) - 15
+            y2_rect = (y2 + rectangle_height // 2) + 15
 
             # Draw background rectangle
             cv2.rectangle(
                 frame,
                 (int(x1_rect), int(y1_rect)),
                 (int(x2_rect), int(y2_rect)),
-                color,
+                (255, 153, 255),
                 cv2.FILLED
             )
             
