@@ -15,7 +15,6 @@ This project provides end‑to‑end image processing pipelines for football (so
 * **Perspective Transformation (Homography)** to map pixel positions into real-world coordinates (meters).
 * **Speed, Distance & Activity Metrics**: compute per-player distance traveled, instantaneous speed, and activity count (frame-to-frame histogram changes).
 
-
 ## 🚀 Quick Start
 
 ### 1. Clone the Repository
