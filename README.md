@@ -4,8 +4,6 @@ Welcome to the **Football Image Processing with OpenCV** project – a modular a
 
 A comprehensive Python toolkit for detecting, segmenting, tracking, and measuring football players and ball movements in video footage using OpenCV and computer vision techniques.
 
-> GitHub Repository: [https://github.com/lawrence253/Football-Image-Processing-with-OpenCV](https://github.com/lawrence253/Football-Image-Processing-with-OpenCV)
-
 ## 🧠 Project Overview
 
 This project provides end‑to‑end image processing pipelines for football (soccer) match analysis, including:
@@ -55,18 +53,9 @@ This will:
 
 ---
 
+## 🖼️ Sample Input & Output
 
-## 📈 Output Examples
-
-* **Annotated Video:** `output_videos/output_video.avi`
-* **Cropped Player Images:** `output_videos/cropped_img.jpg`
-* **Future CSVs:** (you can add export functions for metrics)
-
----
-
-## 🖼️ Sample Input&Output
-
-| Original Image | Processed Output |
+| Original Input| Processed Output|
 |----------------|------------------|
 | ![](sample_input.gif) | ![](sample_output.gif) |
 
@@ -75,13 +64,7 @@ This will:
 * Developed by [lawrence253](https://github.com/lawrence253)
 * YOLO detection via [Ultralytics](https://github.com/ultralytics/ultralytics)
 
-## 💬 Feedback & Contributions
-
-Feel free to open issues or submit pull requests!
-
-👉 [https://github.com/lawrence253/Football-Image-Processing-with-OpenCV/issues](https://github.com/lawrence253/Football-Image-Processing-with-OpenCV/issues)
-
-Feel free to customize language, command names, or folder structure as needed. Let me know if you’d like help generating sample config files, command-line help, or tutorials!
+## 💬 Reference
 
 [1]: https://github.com/AnshChoudhary/Football-Tracking?utm_source=chatgpt.com "Football Tracking using YOLOv8 and OpenCV - GitHub"
 [2]: https://www.iieta.org/download/file/fid/118759?utm_source=chatgpt.com "[PDF] Football Player Tracking and Performance Analysis Using ... - IIETA"
