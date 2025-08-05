@@ -81,9 +81,6 @@ Feel free to open issues or submit pull requests!
 
 👉 [https://github.com/lawrence253/Football-Image-Processing-with-OpenCV/issues](https://github.com/lawrence253/Football-Image-Processing-with-OpenCV/issues)
 
-```
-
-
 Feel free to customize language, command names, or folder structure as needed. Let me know if you’d like help generating sample config files, command-line help, or tutorials!
 
 [1]: https://github.com/AnshChoudhary/Football-Tracking?utm_source=chatgpt.com "Football Tracking using YOLOv8 and OpenCV - GitHub"
