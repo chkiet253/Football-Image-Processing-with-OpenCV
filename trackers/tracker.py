@@ -8,7 +8,7 @@ import numpy as np
 import pandas as pd
 import logging
 sys.path.append('../')
-from utils import get_center_of_bbox, get_bbox_width
+from utils import get_center_of_bbox, get_bbox_width, get_foot_position
 
 class Tracker:
     def __init__(self, model_path, batch_size=20, confidence_threshold=0.1):
@@ -35,6 +35,26 @@ class Tracker:
             'Staff Member': (128, 128, 128)    # Gray
         }
     
+    def add_position_to_tracks(self, tracks):
+        for object_type, object_tracks in tracks.items():
+            for frame_num, track in enumerate(object_tracks):
+                if object_type == 'Ball':
+                    # Ball is a LIST of detections
+                    if isinstance(track, list):
+                        for ball_detection in track:
+                            if 'bbox' in ball_detection:
+                                bbox = ball_detection['bbox']
+                                position = get_center_of_bbox(bbox)
+                                ball_detection['position'] = position
+                else:
+                    # Other objects are DICTIONARIES
+                    if isinstance(track, dict):
+                        for track_id, track_info in track.items():
+                            if 'bbox' in track_info:
+                                bbox = track_info['bbox']
+                                position = get_foot_position(bbox)
+                                tracks[object_type][frame_num][track_id]['position'] = position
+                                
     def interpolate_ball_positions(self, ball_positions):
         '''
         Interpolate missing ball positions across frames

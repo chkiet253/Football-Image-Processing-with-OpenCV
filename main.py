@@ -5,6 +5,7 @@ import cv2
 from player_ball_assigner import PlayerBallAssigner
 import pandas as np
 from camera_movement_estimator import CameraMovementEstimator
+from view_transformer import ViewTransformer
 
 def main():
     #Read video
@@ -16,14 +17,19 @@ def main():
                                       read_from_stub=True,
                                       stub_path='stubs/track_stubs.pkl')
     
+    # Get object positions
+    tracker.add_position_to_tracks(tracks)
+
     # Camera movement estimator
     camera_movement_estimator = CameraMovementEstimator(video_frames[0])
     camera_movement_per_frame = camera_movement_estimator.get_camera_movement(video_frames,
                                                                               read_from_stub=True,
                                                                               stub_path='stubs/camera_movement_stub.pkl')
+    camera_movement_estimator.add_adjust_positions_to_tracks(tracks, camera_movement_per_frame)
 
-
-
+    # View Trasnformer
+    view_transformer = ViewTransformer()
+    view_transformer.add_transformed_position_to_tracks(tracks)
     
     # Interpolate Ball Positions
     tracks["Ball"] = tracker.interpolate_ball_positions(tracks["Ball"])
