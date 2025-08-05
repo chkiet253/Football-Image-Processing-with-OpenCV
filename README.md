@@ -1,7 +1,3 @@
-Certainly! Here's a **detailed and professional `README.md`** tailored to **your current project structure** and pointing to your GitHub repo:
-👉 **[https://github.com/lawrence253/Football-Image-Processing-with-OpenCV](https://github.com/lawrence253/Football-Image-Processing-with-OpenCV)**
-
-You can paste this directly into your `README.md` file.
 
 ---
 
@@ -26,7 +22,7 @@ This project provides end‑to‑end image processing pipelines for football (so
 * **Camera Motion Estimation** with optical flow to compensate for panning or zooming.
 * **Perspective Transformation (Homography)** to map pixel positions into real-world coordinates (meters).
 * **Speed, Distance & Activity Metrics**: compute per-player distance traveled, instantaneous speed, and activity count (frame-to-frame histogram changes).
----
+
 
 ---
 
