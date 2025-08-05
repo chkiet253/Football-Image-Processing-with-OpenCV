@@ -1,7 +1,3 @@
-
----
-
-```markdown
 # ⚽ Football Image Processing with OpenCV
 
 Welcome to the **Football Image Processing with OpenCV** project – a modular and extensible system for detecting, tracking, and analyzing football (soccer) players and ball movement from raw video footage.
@@ -9,8 +5,6 @@ Welcome to the **Football Image Processing with OpenCV** project – a modular a
 A comprehensive Python toolkit for detecting, segmenting, tracking, and measuring football players and ball movements in video footage using OpenCV and computer vision techniques.
 
 > GitHub Repository: [https://github.com/lawrence253/Football-Image-Processing-with-OpenCV](https://github.com/lawrence253/Football-Image-Processing-with-OpenCV)
-
----
 
 ## 🧠 Project Overview
 
@@ -24,15 +18,13 @@ This project provides end‑to‑end image processing pipelines for football (so
 * **Speed, Distance & Activity Metrics**: compute per-player distance traveled, instantaneous speed, and activity count (frame-to-frame histogram changes).
 
 
----
-
 ## 🚀 Quick Start
 
 ### 1. Clone the Repository
 ```bash
 git clone https://github.com/lawrence253/Football-Image-Processing-with-OpenCV.git
 cd Football-Image-Processing-with-OpenCV
-````
+```
 
 ### 2. Install Dependencies
 
