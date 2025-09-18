@@ -19,7 +19,6 @@ This project provides end‑to‑end image processing pipelines for football (so
 
 ### 1. Clone the Repository
 ```bash
-git clone https://github.com/lawrence253/Football-Image-Processing-with-OpenCV.git
 cd Football-Image-Processing-with-OpenCV
 ```
 
@@ -40,28 +39,11 @@ Place your input `.mp4` file in the `input_videos/` directory.
 ```bash
 python main.py
 ```
-
-This will:
-
-* Detect players and the ball
-* Assign teams based on color
-* Track player positions
-* Estimate camera movement
-* Compute distance and speed
-* Output annotated video to `output_videos/output_video.avi`
-
----
-
 ## 🖼️ Sample Input & Output
 
 | Original Input| Processed Output|
 |----------------|------------------|
 | ![](sample_input.gif) | ![](sample_output.gif) |
-
-## 🧠 Credits
-
-* Developed by [lawrence253](https://github.com/lawrence253)
-* YOLO detection via [Ultralytics](https://github.com/ultralytics/ultralytics)
 
 ## 💬 Reference
 
@@ -71,7 +53,6 @@ This will:
 [4]: https://www.youtube.com/watch?pp=0gcJCfwAo7VqN5tD&v=neBZ6huolkg&utm_source=chatgpt.com "Build an AI/ML Football Analysis system with YOLO, OpenCV, and ..."
 [5]: https://arxiv.org/abs/2204.02573?utm_source=chatgpt.com "Detecting key Soccer match events to create highlights using Computer Vision"
 [6]: https://arxiv.org/abs/2402.00163?utm_source=chatgpt.com "Improving Object Detection Quality in Football Through Super-Resolution Techniques"
-
 ---
 
 ## 📝 License
