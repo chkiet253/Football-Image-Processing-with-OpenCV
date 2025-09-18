@@ -45,18 +45,6 @@ python main.py
 |----------------|------------------|
 | ![](sample_input.gif) | ![](sample_output.gif) |
 
-## 💬 Reference
+## License
 
-[1]: https://github.com/AnshChoudhary/Football-Tracking?utm_source=chatgpt.com "Football Tracking using YOLOv8 and OpenCV - GitHub"
-[2]: https://www.iieta.org/download/file/fid/118759?utm_source=chatgpt.com "[PDF] Football Player Tracking and Performance Analysis Using ... - IIETA"
-[3]: https://forum.opencv.org/t/detecting-football-color-kits-in-python/15020?utm_source=chatgpt.com "Detecting Football Color kits in Python - OpenCV Forum"
-[4]: https://www.youtube.com/watch?pp=0gcJCfwAo7VqN5tD&v=neBZ6huolkg&utm_source=chatgpt.com "Build an AI/ML Football Analysis system with YOLO, OpenCV, and ..."
-[5]: https://arxiv.org/abs/2204.02573?utm_source=chatgpt.com "Detecting key Soccer match events to create highlights using Computer Vision"
-[6]: https://arxiv.org/abs/2402.00163?utm_source=chatgpt.com "Improving Object Detection Quality in Football Through Super-Resolution Techniques"
----
-
-## 📝 License
-
-This project is licensed under the MIT License. See [LICENSE](LICENSE) for details.
-
----
+This project is licensed under the Apache-2.0 License.
