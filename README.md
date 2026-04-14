@@ -8,7 +8,7 @@ A comprehensive Python toolkit for detecting, segmenting, tracking, and measurin
 
 This project provides end‑to‑end image processing pipelines for football (soccer) match analysis, including:
 
-* **Fine-Tunning YOLOv8* to bouding box
+* **Fine-Tunning YOLOv8** to bouding box
 * **Player & Ball Detection** using classical computer vision (color thresholding, background/background subtraction) or optional integration with pre‑trained object detectors (YOLO, etc.).
 * **Team Kit Segmentation** by clustering jersey colors (e.g. via K‑Means) to assign players to teams automatically.
 * **Player Tracking** across frames using OpenCV trackers like **CSRT**, **KCF** or **MIL**.
