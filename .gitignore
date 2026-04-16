@@ -2,3 +2,8 @@ training/football-players-detection-14/
 model/
 metrics.txt
 runs/
+*.pt
+*.pth
+*.onnx
+*.mp4
+*.avi
