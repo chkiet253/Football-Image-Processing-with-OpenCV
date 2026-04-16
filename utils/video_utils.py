@@ -1,7 +1,11 @@
 import cv2
 
 def read_video(video_path):
+    # Initialize video capture
     cap = cv2.VideoCapture(video_path)
+    if not cap.isOpened():
+        raise RuntimeError(f"Could not open video file {video_path}")
+
     frames = []
     while True:
         ret, frame = cap.read()
@@ -10,7 +14,7 @@ def read_video(video_path):
         frames.append(frame)
     return frames
 
-def save_video(ouput_video_frames,output_video_path):
+def save_video(ouput_video_frames, output_video_path):
     fourcc = cv2.VideoWriter_fourcc(*'XVID')
     out = cv2.VideoWriter(output_video_path, fourcc, 24, (ouput_video_frames[0].shape[1], ouput_video_frames[0].shape[0]))
     for frame in ouput_video_frames:
